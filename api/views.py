@@ -10,9 +10,11 @@ from rest_framework import status
 def endpoint(request):
     serializer = FieldSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
+    
     x = serializer.validated_data['x']
     y = serializer.validated_data['y']
     operation_type = serializer.validated_data['operation_type']
+    
     if operation_type == 'addition':
         result = x + y
     elif operation_type == 'subtraction':
